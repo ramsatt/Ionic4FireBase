@@ -1,9 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ViewNote</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>{{note.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card color="secondary">
+    <ion-card-header>
+      <ion-card-subtitle>{{note.createdAt | date: 'short'}}</ion-card-subtitle>
+      <ion-card-title>{{note.title}}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <p align="justify">{{note.content}}</p>
+      <br>
+      <ion-button slot="start" color="warning" [routerLink]="'/update-note/' + note.id">Edit</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteNote()">Delete</ion-button>
+    </ion-card-content>
+
+  </ion-card>
 </ion-content>
